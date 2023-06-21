@@ -1,0 +1,18 @@
+from random import randint
+fw = open('trft.txt','w')
+for i in range (10):
+    fw.write(str(randint(1,100))+"\n") # заполнили файл рандомными значениями
+fw.close() 
+a = open('trft.txt', 'r')
+fr=a.read().split('\n') # создали список 
+fr.pop(len(fr)-1) # удалили послений элемент, т.к он будет пустой
+print(fr) # для проверки
+for i in range(len(fr)):
+        for j in range(len(fr)-1):
+            if fr[j] > fr[j+1]:
+                fr[j], fr[j+1] = fr[j+1], fr[j] #сортировка пузырьком 
+print(fr) # для проверки
+fw = open('trft.txt','w')
+for i in range(len(fr)):
+    fw.write(fr[i]+"\n") # перезаполняем файл уже с упорядочеными значениями
+fw.close()
